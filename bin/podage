@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'podage'
+
+require 'trollop'
+
+SUB_COMMANDS = %w(build)
+global_opts = Trollop::options do
+
+	version "test 0.1.0 (c) 2015 Jens Meder"
+	banner <<-EOS
+
+Usage:
+
+   podage [options]
+
+   where [options] are:
+   
+EOS
+	synopsis "asd"
+	stop_on SUB_COMMANDS
+  
+end
+
+cmd = ARGV.shift
+cmd_opts = case cmd
+	when "build" # parse delete options
+		Trollop::options do
+			opt :configuration, "Configuration to be build", :default => "Debug" 
+		end
+	else
+		Trollop::die "unknown subcommand #{cmd.inspect}"
+end
+
+packager = Podage::Packager.new
+packager.build opts[:configuration]
