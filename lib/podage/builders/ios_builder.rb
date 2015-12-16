@@ -69,7 +69,7 @@ module Podage
 		def copy_frameworks
 
 			FileUtils.rm_rf OUTPUT_PATH
-			FileUtils.mkdir OUTPUT_PATH
+			FileUtils.mkpath OUTPUT_PATH + '/ios'
 		
 			FileUtils.cp_r DEVICE_BUILD_PATH, DEVICE_OUTPUT_PATH
 			FileUtils.cp_r SIMULATOR_BUILD_PATH, SIMULATOR_OUTPUT_PATH
@@ -119,6 +119,12 @@ module Podage
 		def target_name
 		
 			return 'iOS'
+		
+		end
+		
+		def platform
+		
+			return :ios
 		
 		end
 	

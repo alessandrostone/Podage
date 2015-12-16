@@ -31,6 +31,7 @@ module Podage
 		def create_podfile(version, &block)
 
 			target_name = self.target_name
+			platform = self.platform
 
 			podfile = Pod::Podfile.new do
 	
@@ -38,7 +39,7 @@ module Podage
 		
 				target target_name do
 		
-					platform :ios, version
+					platform platform, version
 					self.instance_eval &block
 		
 				end
@@ -57,6 +58,12 @@ module Podage
 		end
 		
 		def target_name
+		
+			return nil
+		
+		end
+		
+		def platform
 		
 			return nil
 		

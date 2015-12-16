@@ -31,17 +31,17 @@ module Podage
 		
 		end
 		
-		def package(platform, version, &block)
+		def package(platform, version, configuration = "Debug", &block)
 		
 			if platform == :ios
 			
-				builder = Podage::IOSBuilder.new(version)
-				builder.build("Debug", &block)
+				builder = Podage::IOSBuilder.new version
+				builder.build(configuration, &block)
 			
 			elsif platform == :osx
 			
 				builder = Podage::OSXBuilder.new version
-				builder.build("Debug", &block)
+				builder.build(configuration, &block)
 			
 			end
 		
