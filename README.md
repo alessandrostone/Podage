@@ -26,6 +26,23 @@ $ sudo gem install podage
 
 ## 3. Usage
 
+```ruby
+package :ios, '8.0', 'Release' do
+
+	source 'git@github.com:cocoapods/specs.git'
+
+	pod 'DarkLightning', '~> 0.4.0'
+	pod 'Alamofire'
+	
+end
+
+package :osx, '10.9' do
+
+	pod 'DarkLightning', '~> 0.4.0'
+	
+end
+```
+
 ## 4. License
 
 The MIT License (MIT)
