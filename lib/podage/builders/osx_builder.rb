@@ -47,17 +47,13 @@ module Podage
 					puts "Building ".bold + no_extension.green
 					puts ""
 				
-					build_framework(BUILD_PATH + "/Pods/Pods.xcodeproj",no_extension, configuration)
+					xcodebuild_framework(BUILD_PATH + "/Pods/Pods.xcodeproj", no_extension, configuration, OSX_ARCHS, BUILD_PATH, OSX_PLATFORM)
 
 				end
 			end
 		end
 
 		# Build Frameworks
-
-		def build_framework(project, scheme, configuration)
-			execute_cmd('xcodebuild ONLY_ACTIVE_ARCH="NO" -project "' + project + '" -scheme ' + scheme + ' -sdk macosx -configuration ' + configuration + ' clean build CONFIGURATION_BUILD_DIR="' + BUILD_PATH + '/osx' + '" | xcpretty --color')
-		end
 		
 		def copy_frameworks
 		

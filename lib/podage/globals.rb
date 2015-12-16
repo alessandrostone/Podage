@@ -24,10 +24,12 @@ module Podage
 
 	SIMULATOR_ARCHS			= "i386 x86_64"
 	DEVICE_ARCHS			= "armv7 armv7s arm64"
+	OSX_ARCHS				= "x86_64"
 
 	SIMULATOR_PLATFORM		= "iphonesimulator"
 	DEVICE_PLATFORM			= "iphoneos"
 	UNIVERSAL_PLATFORM		= "universal"
+	OSX_PLATFORM			= "macosx"
 	
 	DSYM_PATH				= "Contents/Resources/DWARF"
 

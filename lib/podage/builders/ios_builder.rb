@@ -105,13 +105,9 @@ module Podage
 
 		# Build Frameworks
 
-		def build_framework_archs(project, scheme, configuration, archs, build_dir, platform)
-			execute_cmd('xcodebuild clean build SUPPORTED_PLATFORMS='+platform+' ONLY_ACTIVE_ARCH="NO" VALID_ARCHS="' +archs + '" ARCHS="'+archs+'" -project "' + project + '" -scheme ' + scheme + ' -sdk ' + platform +  ' -configuration ' + configuration + ' CONFIGURATION_BUILD_DIR="' + build_dir + '" | xcpretty --color')
-		end
-
 		def build_framework(project, scheme, configuration)
-			build_framework_archs(project, scheme, configuration, SIMULATOR_ARCHS, SIMULATOR_BUILD_PATH, SIMULATOR_PLATFORM)
-			build_framework_archs(project, scheme, configuration, DEVICE_ARCHS, DEVICE_BUILD_PATH, DEVICE_PLATFORM)
+			xcodebuild_framework(project, scheme, configuration, SIMULATOR_ARCHS, SIMULATOR_BUILD_PATH, SIMULATOR_PLATFORM)
+			xcodebuild_framework(project, scheme, configuration, DEVICE_ARCHS, DEVICE_BUILD_PATH, DEVICE_PLATFORM)
 		end
 		
 		public

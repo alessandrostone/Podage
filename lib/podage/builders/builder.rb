@@ -80,6 +80,10 @@ module Podage
 				end
 			end
 		end
+		
+		def xcodebuild_framework(project, scheme, configuration, archs, build_dir, platform)
+			execute_cmd('xcodebuild clean build SUPPORTED_PLATFORMS='+platform+' ONLY_ACTIVE_ARCH="NO" VALID_ARCHS="' +archs + '" ARCHS="'+archs+'" -project "' + project + '" -scheme ' + scheme + ' -sdk ' + platform +  ' -configuration ' + configuration + ' CONFIGURATION_BUILD_DIR="' + build_dir + '" | xcpretty --color')
+		end
 	
 	end
 
