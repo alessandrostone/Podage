@@ -26,10 +26,12 @@ $ sudo gem install podage
 
 ## 3. Usage
 
+### 3.1 Podagefile
+
+The Podagefile specifies all Cocoapods you want to bundle as frameworks. A Podagefile consists of one or more packages. A package is a collection of pods for a specific platform, version, and configuration (_optional_). 
+
 ```ruby
 package :ios, '8.0', 'Release' do
-
-	source 'git@github.com:cocoapods/specs.git'
 
 	pod 'DarkLightning', '~> 0.4.0'
 	pod 'Alamofire'
@@ -37,6 +39,29 @@ package :ios, '8.0', 'Release' do
 end
 
 package :osx, '10.9' do
+
+	pod 'DarkLightning', '~> 0.4.0'
+	
+end
+```
+
+You can use any pod syntax that you would use in a Podfile.
+
+```ruby
+package :ios, '8.0', 'Debug' do
+
+	pod 'DarkLightning', :path => '/Users/jens/Documents/Projects/DarkLightning'
+	pod 'Alamofire', :git => 'git@github.com:jensmeder/DarkLightning'
+	
+end
+```
+
+You can also specify a private specs repo.
+
+```ruby
+package :osx, '10.9' do
+
+	source 'https://www.github.com/jensmeder/specs.git'
 
 	pod 'DarkLightning', '~> 0.4.0'
 	
