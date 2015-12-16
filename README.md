@@ -1,6 +1,6 @@
 # Podage
 
-Podage bundles any Cocoapod and its dependencies into a framework - without using cocoapods in your project setup. Just specify the pods and platform, run Podage, and drag the frameworks to your XCode project. Done!
+Podage bundles any Cocoapod and its dependencies into a framework - without using cocoapods in your project setup. Just specify the pods and platform and the Podagefile, run Podage, and drag the frameworks to your XCode project. Done!
 
 ## Overview
 
