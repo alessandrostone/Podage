@@ -18,6 +18,7 @@ module Podage
 			# Clean _build folder
 
 			FileUtils.rm_rf BUILD_PATH
+			FileUtils.rm_rf OUTPUT_PATH
 
 			# Download Template
 
@@ -27,7 +28,7 @@ module Podage
 			puts "Loading Podagefile".green
 			load_podage_file
 
-			FileUtils.rm_rf BUILD_PATH
+			#FileUtils.rm_rf BUILD_PATH
 		
 		end
 		

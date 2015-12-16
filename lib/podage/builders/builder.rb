@@ -22,11 +22,32 @@ module Podage
 			installer = Pod::Installer.new(sandbox, podfile)
 			installer.install!
 			
+			share_schemes
+			
 			FileUtils.cd ".."
 		
 		end
 		
 		private
+		
+		def share_schemes
+		
+			schemes = Dir.glob(PODS_PROJECT_PATH + "/xcuserdata/**/*.xcscheme")
+
+			schemes.each do |scheme|
+	
+				
+				name = File.basename scheme
+
+				if !scheme.end_with?("Pods-iOS.xcscheme")
+					
+					FileUtils.mkdir_p PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH
+					FileUtils.mv(scheme, PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH + '/' + name)
+
+				end
+			end
+		
+		end
 		
 		def create_podfile(version, &block)
 

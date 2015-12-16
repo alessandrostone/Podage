@@ -31,24 +31,19 @@ module Podage
 		
 		def build_frameworks(configuration)
 
-			schemes = Dir.glob(PODS_PROJECT_PATH + "/xcuserdata/**/*.xcscheme")
+			schemes = Dir.glob(PODS_PROJECT_PATH + "/xcshareddata/**/*.xcscheme")
 
 			schemes.each do |scheme|
 	
-				name = File.basename scheme
-				no_extension = File.basename(scheme, ".*" )
-	
 				if !scheme.end_with?("Pods-OSX.xcscheme")
-		
-					FileUtils.mkdir_p PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH
-					FileUtils.mv(scheme, PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH + '/' + name)
-			
+					name = File.basename scheme
+					no_extension = File.basename(scheme, ".*" )
+	
 					puts ""
 					puts "Building ".bold + no_extension.green
 					puts ""
 				
-					xcodebuild_framework(BUILD_PATH + "/Pods/Pods.xcodeproj", no_extension, configuration, OSX_ARCHS, BUILD_PATH, OSX_PLATFORM)
-
+					xcodebuild_framework(BUILD_PATH + "/Pods/Pods.xcodeproj", no_extension, configuration, OSX_ARCHS, BUILD_PATH + '/macosx', OSX_PLATFORM)
 				end
 			end
 		end
@@ -57,7 +52,8 @@ module Podage
 		
 		def copy_frameworks
 		
-			FileUtils.cp_r BUILD_PATH + '/osx', OUTPUT_PATH + '/osx'
+			FileUtils.mkpath OUTPUT_PATH + '/osx'
+			FileUtils.cp_r BUILD_PATH + '/macosx', OUTPUT_PATH + '/osx/'
 
 		end
 	

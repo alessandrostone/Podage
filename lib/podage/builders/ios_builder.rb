@@ -80,26 +80,20 @@ module Podage
 		# Share all schemes
 
 		def build_frameworks(configuration)
-
-			schemes = Dir.glob(PODS_PROJECT_PATH + "/xcuserdata/**/*.xcscheme")
+			
+			schemes = Dir.glob(PODS_PROJECT_PATH + "/xcshareddata/**/*.xcscheme")
 
 			schemes.each do |scheme|
 	
 				name = File.basename scheme
 				no_extension = File.basename(scheme, ".*" )
-	
-				if !scheme.end_with?("Pods-iOS.xcscheme")
-		
-					FileUtils.mkdir_p PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH
-					FileUtils.mv(scheme, PODS_PROJECT_PATH + '/' + XCSCHEMES_PATH + '/' + name)
-			
-					puts ""
-					puts "Building ".bold + no_extension.green
-					puts ""
-				
-					build_framework(BUILD_PATH + "/Pods/Pods.xcodeproj",no_extension, configuration)
 
-				end
+				puts ""
+				puts "Building ".bold + no_extension.green
+				puts ""
+				
+				build_framework(BUILD_PATH + "/Pods/Pods.xcodeproj",no_extension, configuration)
+
 			end
 		end
 
