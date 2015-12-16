@@ -14,6 +14,7 @@ Podage bundles any Cocoapod and its dependencies into a framework - without usin
 * build and use any Cocoapod without messing with your project or workspace
 * compatible with iOS 8.0+ and OSX (tvOS and watchOS coming soon)
 * builds frameworks for iOS device and iOS Simulator architectures as well as universal frameworks for both (including dSYMs) for maximum flexibility
+* supports development pods and private specs repositories
 
 ## 2. Installation
 
