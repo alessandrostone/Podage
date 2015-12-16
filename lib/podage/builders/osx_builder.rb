@@ -1,7 +1,7 @@
 module Podage
 
-	require_relative '../globals'
-	require_relative 'builder'
+	require 'podage/globals'
+	require 'podage/builders/builder'
 
 	class OSXBuilder < Builder
 		
@@ -56,12 +56,12 @@ module Podage
 		# Build Frameworks
 
 		def build_framework(project, scheme, configuration)
-			execute_cmd('xcodebuild ONLY_ACTIVE_ARCH="NO" -project "' + project + '" -scheme ' + scheme + ' -sdk macosx -configuration ' + configuration + ' clean build CONFIGURATION_BUILD_DIR="' + BUILD_PATH + '/osx' + '" | xcpretty --color')
+			execute_cmd('xcodebuild ONLY_ACTIVE_ARCH="NO" -project "' + project + '" -scheme ' + scheme + ' -sdk macosx -configuration ' + configuration + ' clean build CONFIGURATION_BUILD_DIR="' + OSX_BUILD_PATH + '" | xcpretty --color')
 		end
 		
 		def copy_frameworks
 		
-			FileUtils.cp_r BUILD_PATH + '/osx', OUTPUT_PATH + '/osx'
+			FileUtils.cp_r OSX_BUILD_PATH, OSX_OUTPUT_PATH
 
 		end
 	

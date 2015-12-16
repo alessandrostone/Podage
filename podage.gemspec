@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
 	s.description = "A simple tool to package Cocoapods into Frameworks"
 	s.authors     = ["Jens Meder"]
 	s.email       = 'me@jensmeder.de'
+	s.homepage	  = 'http://www.jensmeder.de'
 	s.files       = ["lib/podage.rb","lib/podage/packager.rb", "lib/podage/globals.rb", "lib/podage/builders/builder.rb", "lib/podage/builders/ios_builder.rb", "lib/podage/builders/osx_builder.rb"]
 
 	s.license       = 'MIT'

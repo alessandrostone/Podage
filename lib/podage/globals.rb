@@ -9,7 +9,15 @@ module Podage
 	# Paths
 
 	OUTPUT_PATH				= FileUtils.pwd + "/Frameworks"
+	
+	IOS_OUTPUT_PATH			= OUTPUT_PATH + '/ios'
+	OSX_OUTPUT_PATH			= OUTPUT_PATH + '/osx'
+	
 	BUILD_PATH 				= FileUtils.pwd + "/_build"
+	
+	IOS_BUILD_PATH			= BUILD_PATH + '/ios'
+	OSX_BUILD_PATH			= BUILD_PATH + '/osx'
+	
 	PODFILE_PATH 			= BUILD_PATH + "/Podfile"
 	PODS_PROJECT_PATH		= BUILD_PATH + "/Pods/Pods.xcodeproj"
 	XCSCHEMES_PATH 			= "xcshareddata/xcschemes"

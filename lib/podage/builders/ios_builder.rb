@@ -1,7 +1,7 @@
 module Podage
 
-	require_relative '../globals'
-	require_relative 'builder'
+	require 'podage/globals'
+	require 'podage/builders/builder'
 
 	class IOSBuilder < Builder
 		
@@ -68,8 +68,8 @@ module Podage
 		
 		def copy_frameworks
 
-			FileUtils.rm_rf OUTPUT_PATH
-			FileUtils.mkpath OUTPUT_PATH + '/ios'
+			FileUtils.rm_rf IOS_OUTPUT_PATH
+			FileUtils.mkpath IOS_OUTPUT_PATH
 		
 			FileUtils.cp_r DEVICE_BUILD_PATH, DEVICE_OUTPUT_PATH
 			FileUtils.cp_r SIMULATOR_BUILD_PATH, SIMULATOR_OUTPUT_PATH

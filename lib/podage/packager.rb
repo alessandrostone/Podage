@@ -1,8 +1,8 @@
 module Podage
 
-	require_relative 'globals'
-	require_relative 'builders/ios_builder'
-	require_relative 'builders/osx_builder'
+	require 'podage/globals'
+	require 'podage/builders/ios_builder'
+	require 'podage/builders/osx_builder'
 
 	class Packager
 	

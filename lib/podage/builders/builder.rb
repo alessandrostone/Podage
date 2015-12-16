@@ -1,6 +1,6 @@
 module Podage
 
-	require_relative '../globals'
+	require 'podage/globals'
 
 	class Builder
 	
