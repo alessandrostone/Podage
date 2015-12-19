@@ -15,8 +15,7 @@ Gem::Specification.new do |s|
 					 "lib/podage/builders/ios_builder.rb", 
 					 "lib/podage/builders/osx_builder.rb",
 					 "lib/podage/cli/command.rb",
-					 "lib/podage/cli/option.rb",
-					 "lib/podage/cli/cli.rb"]
+					 "lib/podage/cli/option.rb"]
 
 	s.license       = 'MIT'
 	s.executables << 'podage'

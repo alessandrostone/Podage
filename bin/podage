@@ -1,12 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'podage'
-require 'podage/cli/cli'
+require 'podage/cli/command'
+require 'podage/cli/option'
 
 require 'colored'
 require 'fileutils'
 
-cli = Podage::CLI.new
+cli = Podage::Command.new "root", "" do |c|
+
+	c.print
+
+end
+
+cli.base_command = "podage"
 
 init_command = Podage::Command.new "init", "Creates a new Podagefile" do
 
@@ -15,13 +22,13 @@ init_command = Podage::Command.new "init", "Creates a new Podagefile" do
 	file.write <<-DESC
 package :ios, '8.0', 'Debug' do
 
-	# pod 'DarkLightning', '~> 0.4.1'
+	pod 'DarkLightning', '~> 0.4.1'
 	
 end
 
 package :osx, '10.9', 'Debug' do
 
-	# pod 'Alamofire'
+	pod 'Alamofire'
 	
 end
 
@@ -30,6 +37,9 @@ DESC
 	exit
 
 end
+
+init_command.base_command = "podage init"
+init_command.usage = "Hello world"
 
 build_command = Podage::Command.new "build", "Builds the Podagefile" do
 
@@ -40,8 +50,25 @@ build_command = Podage::Command.new "build", "Builds the Podagefile" do
 
 end
 
+build_command.base_command = "podage build"
+
 cli.add_command init_command
+
+init_help_option = Podage::Option.new("--help", "-h","Shows this help",false) do
+	init_command.print
+	exit
+end
+
+init_command.add_option init_help_option
+
 cli.add_command build_command
+
+build_help_option = Podage::Option.new("--help", "-h","Shows this help",false) do
+	build_command.print
+	exit
+end
+
+build_command.add_option build_help_option
 
 version_option = Podage::Option.new("--version","-v","Shows version information",false) do
 	puts "Podage version " + "0.1.0".bold

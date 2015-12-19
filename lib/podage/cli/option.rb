@@ -14,7 +14,7 @@ module Podage
 			@name = name
 			@short_cut = short_cut
 			@description = description
-			@has_rgument = has_argument
+			@has_argument = has_argument
 			@block = block
 			
 		end
