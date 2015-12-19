@@ -38,19 +38,19 @@ module Podage
 		
 		def parse(args)
 		
-			if args.empty?
+			args_tmp = args.dup
+		
+			if args_tmp.empty?
 		
 				@block.call self
 				
 			else
 				
-				args.each do |arg|
+				args_tmp.each do |arg|
 				
 					@commands.each do |command|
 				
 						if arg == command.name
-					
-							args_tmp = args.dup
 
 							args_tmp.delete(arg)
 
@@ -64,6 +64,8 @@ module Podage
 				
 						if arg == option.name || arg == option.short_cut
 					
+							args_tmp.delete(arg)
+							
 							option.execute
 					
 						end
@@ -71,6 +73,24 @@ module Podage
 					end
 				
 				end
+			
+			end
+			
+			unless args_tmp.empty?
+			
+				error = "Unknown arguments: "
+				
+				args_tmp.each do |arg|
+				
+					error += arg + " "
+				
+				end
+				
+				puts error
+				
+				print
+				
+				exit
 			
 			end
 		
