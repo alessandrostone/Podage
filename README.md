@@ -21,7 +21,7 @@ Podage bundles any Cocoapod and its dependencies into a framework - without usin
 Podage is built with Ruby and can be installed via ruby gems. If you use the default Ruby installation on Mac OS X, `gem install` can require you to use `sudo` when installing gems. 
 
 ```ruby
-$ sudo gem install podage
+$ gem install podage
 ```
 
 ## 3. Usage
