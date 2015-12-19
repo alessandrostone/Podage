@@ -29,6 +29,7 @@ require 'podage/cli/option'
 
 require 'colored'
 require 'fileutils'
+require 'podage/version'
 
 cli = Podage::Command.new "root", "" do |c|
 
@@ -94,7 +95,7 @@ end
 build_command.add_option build_help_option
 
 version_option = Podage::Option.new("--version","-v","Shows version information",false) do
-	puts "Podage version " + "0.1.0".bold
+	puts "Podage version " + Podage::VERSION.bold
 	
 	exit
 end

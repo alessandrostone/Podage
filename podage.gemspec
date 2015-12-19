@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
 	s.email       = 'me@jensmeder.de'
 	s.homepage	  = 'http://www.jensmeder.de'
 	s.files       = ["lib/podage.rb",
+					 "lib/podage/version.rb",
 					 "lib/podage/packager.rb", 
 					 "lib/podage/globals.rb", 
 					 "lib/podage/builders/builder.rb", 
