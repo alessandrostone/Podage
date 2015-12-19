@@ -1,3 +1,5 @@
+[![Gem Version](http://img.shields.io/gem/v/podage.svg?style=flat)](http://badge.fury.io/rb/podage)
+
 # Podage
 
 Podage bundles any Cocoapod and its dependencies into a framework - without using cocoapods in your project setup. 
