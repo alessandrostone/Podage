@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
 	s.name        = 'Podage'
 	s.version     = '0.1.0'
 	s.date        = '2015-12-15'
-	s.summary     = 'A simple tool to package Cocoapods into Frameworks'
-	s.description = "A simple tool to package Cocoapods into Frameworks"
+	s.summary     = 'Package Cocoapods into Frameworks'
+	s.description = 'A simple tool to package Cocoapods into Frameworks'
 	s.authors     = ["Jens Meder"]
 	s.email       = 'me@jensmeder.de'
 	s.homepage	  = 'http://www.jensmeder.de'
