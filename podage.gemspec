@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
 
-	s.name        = 'Podage'
+	s.name        = 'podage'
 	s.version     = '0.1.0'
-	s.date        = '2015-12-15'
+	s.date        = '2015-12-19'
 	s.summary     = 'Package Cocoapods into Frameworks'
 	s.description = 'A simple tool to package Cocoapods into Frameworks'
 	s.authors     = ["Jens Meder"]
 	s.email       = 'me@jensmeder.de'
-	s.homepage	  = 'http://www.jensmeder.de'
+	s.homepage	  = 'https://github.com/jensmeder/Podage'
 	s.files       = ["lib/podage.rb",
 					 "lib/podage/version.rb",
 					 "lib/podage/packager.rb", 
