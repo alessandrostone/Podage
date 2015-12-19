@@ -1,6 +1,60 @@
 #!/usr/bin/env ruby
 
 require 'podage'
+require 'podage/cli/cli'
 
-packager = Podage::Packager.new
-packager.build
+require 'colored'
+require 'fileutils'
+
+cli = Podage::CLI.new
+
+init_command = Podage::Command.new "init", "Creates a new Podagefile" do
+
+	puts "Creating Podagefile".green
+	file = File.new("Podagefile", "w+")
+	file.write <<-DESC
+package :ios, '8.0', 'Debug' do
+
+	# pod 'DarkLightning', '~> 0.4.1'
+	
+end
+
+package :osx, '10.9', 'Debug' do
+
+	# pod 'Alamofire'
+	
+end
+
+DESC
+	file.close
+	exit
+
+end
+
+build_command = Podage::Command.new "build", "Builds the Podagefile" do
+
+	packager = Podage::Packager.new
+	packager.build
+	
+	exit
+
+end
+
+cli.add_command init_command
+cli.add_command build_command
+
+version_option = Podage::Option.new("--version","-v","Shows version information",false) do
+	puts "Podage version " + "0.1.0".bold
+	
+	exit
+end
+
+help_option = Podage::Option.new("--help","-h","Shows this help",false) do
+	cli.print
+	exit
+end
+
+cli.add_option version_option
+cli.add_option help_option
+
+cli.parse ARGV
