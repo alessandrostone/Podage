@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
 	s.name        = 'podage'
-	s.version     = '0.1.0'
+	s.version     = '0.1.1'
 	s.date        = '2015-12-19'
 	s.summary     = 'Package Cocoapods into Frameworks'
 	s.description = 'A simple tool to package Cocoapods into Frameworks'
