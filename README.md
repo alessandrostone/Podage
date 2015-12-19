@@ -1,6 +1,6 @@
 # Podage
 
-Podage bundles any Cocoapod and its dependencies into a framework - without using cocoapods in your project setup. Just specify the pods and platform and the Podagefile, run Podage, and drag the frameworks to your XCode project. Done!
+Podage bundles any Cocoapod and its dependencies into a framework - without using cocoapods in your project setup. 
 
 ## Overview
 
@@ -13,7 +13,7 @@ Podage bundles any Cocoapod and its dependencies into a framework - without usin
 
 * build and use any Cocoapod without messing with your project or workspace
 * compatible with iOS 8.0+ and OSX (tvOS and watchOS coming soon)
-* builds frameworks for iOS device and iOS Simulator architectures as well as universal frameworks for both (including dSYMs) for maximum flexibility
+* builds frameworks for iOS devices and iOS Simulator architectures as well as universal frameworks for both (including dSYMs) for maximum flexibility
 * supports development pods and private specs repositories
 
 ## 2. Installation
@@ -26,9 +26,13 @@ $ sudo gem install podage
 
 ## 3. Usage
 
-### 3.1 Podagefile
+### 3.1 Init the Podagefile
 
-The Podagefile specifies all Cocoapods you want to bundle as frameworks. A Podagefile consists of one or more packages. A package is a collection of pods for a specific platform, version, and configuration (_optional_). 
+The Podagefile specifies all Cocoapods you want to bundle as frameworks. Run `podage init` to create a new Podagefile in the current directory. Then add all pods you want to package and run `podage build` to build them. The frameworks will be copied to the `Frameworks` folder in the same folder where your Podagefile is stored.
+
+### 3.2 Podagefile structure
+
+A Podagefile consists of one or more packages. A package is a collection of pods for a specific platform, version, and configuration (_optional_). 
 
 ```ruby
 package :ios, '8.0', 'Release' do
@@ -45,12 +49,12 @@ package :osx, '10.9' do
 end
 ```
 
-You can use any pod syntax that you would use in a Podfile.
+You can use any pod syntax that you would use in a Podfile. See https://guides.cocoapods.org/syntax/podfile.html#pod for more information.
 
 ```ruby
 package :ios, '8.0', 'Debug' do
 
-	pod 'DarkLightning', :path => '/Users/jens/Documents/Projects/DarkLightning'
+	pod 'DarkLightning/OSX', :path => '/Users/jens/Documents/Projects/DarkLightning'
 	pod 'Alamofire', :git => 'git@github.com:jensmeder/DarkLightning'
 	
 end
