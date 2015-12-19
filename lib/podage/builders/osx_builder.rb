@@ -53,7 +53,13 @@ module Podage
 		def copy_frameworks
 		
 			FileUtils.mkpath OUTPUT_PATH + '/osx'
-			FileUtils.cp_r BUILD_PATH + '/macosx', OUTPUT_PATH + '/osx/'
+			
+			path = BUILD_PATH + '/macosx'
+			
+			if Dir.exists?(path)
+				FileUtils.cp_r path, OUTPUT_PATH + '/osx/'
+			end
+			
 
 		end
 	

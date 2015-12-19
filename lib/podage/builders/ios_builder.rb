@@ -71,9 +71,17 @@ module Podage
 			FileUtils.rm_rf IOS_OUTPUT_PATH
 			FileUtils.mkpath IOS_OUTPUT_PATH
 		
-			FileUtils.cp_r DEVICE_BUILD_PATH, DEVICE_OUTPUT_PATH
-			FileUtils.cp_r SIMULATOR_BUILD_PATH, SIMULATOR_OUTPUT_PATH
-			FileUtils.cp_r UNIVERSAL_BUILD_PATH, UNIVERSAL_OUTPUT_PATH
+			if Dir.exists?(DEVICE_BUILD_PATH)
+				FileUtils.cp_r DEVICE_BUILD_PATH, DEVICE_OUTPUT_PATH
+			end
+			
+			if Dir.exists?(SIMULATOR_BUILD_PATH)
+				FileUtils.cp_r SIMULATOR_BUILD_PATH, SIMULATOR_OUTPUT_PATH
+			end
+			
+			if Dir.exists?(UNIVERSAL_BUILD_PATH)
+				FileUtils.cp_r UNIVERSAL_BUILD_PATH, UNIVERSAL_OUTPUT_PATH
+			end
 
 		end
 		
